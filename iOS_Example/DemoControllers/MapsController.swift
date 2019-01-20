@@ -99,12 +99,12 @@ class MapsController: BaseDemoController {
         }
         
         if timer != nil {
-            RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
+            RunLoop.current.add(timer!, forMode: .common)
         }
     }
     
     fileprivate var currLoc = 0
-    func mapLocateOption() {
+    @objc func mapLocateOption() {
         let location: [[String: Jsonable]] = [[
             "name": "上海",
             "coord": [121.472644, 31.231706]

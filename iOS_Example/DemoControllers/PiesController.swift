@@ -32,7 +32,7 @@ class PiesController: BaseDemoController {
                 self.timer = nil
             }
             timer = Timer(timeInterval: 1.0, target: self, selector: #selector(self.dispatchAction), userInfo: nil, repeats: true)
-            RunLoop.current.add(timer!, forMode: .commonModes)
+            RunLoop.current.add(timer!, forMode: .common)
 //            echartsView.addListener(for: .click, with: { (params) in
 //                print("params: \(params)")
 //            })
@@ -40,7 +40,7 @@ class PiesController: BaseDemoController {
     }
     
     var currentIndex: Int = -1
-    internal func dispatchAction() {
+    @objc internal func dispatchAction() {
         let dataLen = (option.series![0] as! PieSerie).data!.count
         echartsView.dispatchAction(DownplayAction(
             .seriesIndex(0),

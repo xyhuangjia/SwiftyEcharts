@@ -40,11 +40,11 @@ class LinesController: BaseDemoController {
         
         if indexPath.row == 4 { // 动态数据 + 时间坐标轴
             timer = Timer(timeInterval: 1.0, target: self, selector: #selector(self.dynamicData), userInfo: nil, repeats: true)
-            RunLoop.current.add(timer!, forMode: .commonModes)
+            RunLoop.current.add(timer!, forMode: .common)
         }
     }
     
-    func dynamicData() {
+    @objc func dynamicData() {
         if let serie = self.option.series?[0] as? LineSerie {
             for _ in 0 ..< 5 {
                 LineOptions.data.removeFirst()

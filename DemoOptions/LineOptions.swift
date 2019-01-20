@@ -25,10 +25,10 @@ public final class LineOptions {
         let xAxisDatas = (plistDatas["XAxisDatas"] as! [String]).map({ (ele) -> Jsonable in
             return ele
         })
-        let seriesDatas1 = (plistDatas["SeriesData1"] as! [Float]).map { (ele) -> Jsonable in
+        let seriesDatas1 = (plistDatas["SeriesData1"] as! [NSNumber]).map { (ele) -> Jsonable in
             return ele
         }
-        let seriesDatas2 = (plistDatas["SeriesData2"] as! [Float]).map { (ele) -> Jsonable in
+        let seriesDatas2 = (plistDatas["SeriesData2"] as! [NSNumber]).map { (ele) -> Jsonable in
             return ele
         }
         let areaData1: [Jsonable] = [[["xAxis": "2009/9/12/\\n7:00"], ["xAxis": "2009/9/22\\n7:00"]]]
@@ -398,10 +398,10 @@ public final class LineOptions {
         let xAxisDatas = (plistDatas["XAxisDatas"] as! [String]).map({ (ele) -> Jsonable in
             return ele.replacingOccurrences(of: "2009/", with: "").replacingOccurrences(of: "\\n", with: " ")
         })
-        let seriesDatas1 = (plistDatas["SeriesData1"] as! [Float]).map { (ele) -> Jsonable in
+        let seriesDatas1 = (plistDatas["SeriesData1"] as! [NSNumber]).map { (ele) -> Jsonable in
             return ele
         }
-        let seriesDatas2 = (plistDatas["SeriesData2"] as! [Float]).map { (ele) -> Jsonable in
+        let seriesDatas2 = (plistDatas["SeriesData2"] as! [NSNumber]).map { (ele) -> Jsonable in
             return ele
         }
         return Option(
@@ -1025,8 +1025,22 @@ public final class LineOptions {
                 .trigger(.axis)
                 )),
             .legend(Legend(
-                .data(["邮件营销","联盟广告","视频广告","直接访问","搜索引擎"])
+                .data([Legend.Data(
+                    .name("邮件营销"),
+                    .icon(.circle)
+                    )
+                    ,Legend.Data(
+                        .name("联盟广告"),
+                        .icon(.circle)
+                    ),Legend.Data(
+                        .name("视频广告"),
+                        .icon(.circle)
+                    ),"直接访问","搜索引擎"]),
+                .itemWidth(5),
+                .itemHeight(5)
+                
                 )),
+           
             .grid(Grid(
                 .left(.value(3%)),
                 .right(.value(4%)),

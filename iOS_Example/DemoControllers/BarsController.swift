@@ -58,11 +58,11 @@ class BarsController: BaseDemoController {
             })
         }
         if timer != nil {
-            RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
+            RunLoop.current.add(timer!, forMode: .common)
         }
     }
     
-    func dynamicData() {
+    @objc func dynamicData() {
         let serie0 = newOptionForDynamicData.series![0] as! BarSerie
         let serie1 = newOptionForDynamicData.series![1] as! LineSerie
         var data0 = serie0.data

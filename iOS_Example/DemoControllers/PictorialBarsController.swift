@@ -40,14 +40,14 @@ class PictorialBarsController: BaseDemoController {
         }
         if indexPath.row == 3 { // 精灵
             timer = Timer(timeInterval: 3, target: self, selector: #selector(self.pictorialBarSpirit), userInfo: nil, repeats: true)
-            RunLoop.current.add(timer!, forMode: .commonModes)
+            RunLoop.current.add(timer!, forMode: .common)
         } else if indexPath.row == optionClosures.count - 1 { // 森林的增长
             timer = Timer(timeInterval: 0.8, target: self, selector: #selector(self.pictorialBarForest), userInfo: nil, repeats: true)
-            RunLoop.current.add(timer!, forMode: .commonModes)
+            RunLoop.current.add(timer!, forMode: .common)
         }
     }
     
-    func pictorialBarSpirit() {
+    @objc func pictorialBarSpirit() {
         let random = {
             return Float(Float(arc4random_uniform(1000))/1000.0) * 1990 as Jsonable
         }
@@ -65,7 +65,7 @@ class PictorialBarsController: BaseDemoController {
     }
     
     var currentYear = PictorialBarOptions.beginYear
-    func pictorialBarForest() {
+    @objc func pictorialBarForest() {
         currentYear += 1
         if currentYear > PictorialBarOptions.endYear {
             currentYear = PictorialBarOptions.beginYear

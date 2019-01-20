@@ -50,11 +50,11 @@ class GaugesController: BaseDemoController {
             print("错误输入")
         }
         if let t = timer {
-            RunLoop.current.add(t, forMode: RunLoopMode.commonModes)
+            RunLoop.current.add(t, forMode: .common)
         }
     }
     
-    func randomForGauge() {
+    @objc func randomForGauge() {
         let option = self.option
         let data: [String: Jsonable] = ["value": Double(arc4random_uniform(100) + 1), "name": "完成率"]
         let serie = option?.series![0] as! GaugeSerie
@@ -63,7 +63,7 @@ class GaugesController: BaseDemoController {
         self.echartsView.refreshEcharts(option!)
     }
     
-    func randomForGaugeCar() {
+    @objc func randomForGaugeCar() {
         let option = self.option
         let data1: [String: Jsonable] = ["value": Double(arc4random_uniform(100) + 1), "name": "km/h"]
         let serie1 = option?.series![0] as! GaugeSerie

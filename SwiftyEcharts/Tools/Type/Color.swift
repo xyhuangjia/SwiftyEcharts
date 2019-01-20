@@ -97,7 +97,7 @@ public enum Color: Jsonable {
         
         cString.remove(at: cString.startIndex)
         
-        guard cString.characters.count == 6 || cString.characters.count == 3 else {
+        guard cString.count == 6 || cString.count == 3 else {
             return false
         }
         
